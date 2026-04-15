@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visara Digital — Presença que Converte</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080808;
+    --white: #f5f2ee;
+    --gold: #c9a96e;
+    --gold-light: #e8d5a3;
+    --gold-dark: #8b6914;
+    --gray: #1a1a1a;
+    --gray-mid: #333;
+    --gray-light: #888;
+    --text: #2a2520;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(8,8,8,0.95), transparent);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .logo span { color: var(--white); }
+
+  nav a {
+    color: var(--gray-light);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    transition: color 0.3s;
+  }
+
+  nav a:hover { color: var(--gold); }
+
+  .nav-links { display: flex; gap: 40px; }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    padding: 10px 24px;
+    font-size: 12px !important;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 0.3s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold) !important;
+    color: var(--black) !important;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 120px 60px 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(201,169,110,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,169,110,0.04) 0%, transparent 60%);
+  }
+
+  .hero-line {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(201,169,110,0.15), transparent);
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 680px;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 88px);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--gray-light);
+    max-width: 480px;
+    margin-bottom: 48px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+    padding: 16px 40px;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    color: var(--gray-light);
+    font-size: 13px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s;
+  }
+
+  .btn-ghost:hover { color: var(--white); }
+
+  .hero-right {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,169,110,0.15);
+    padding: 24px 32px;
+    width: 220px;
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .stat-card:nth-child(2) { animation-delay: -2s; margin-left: 24px; }
+  .stat-card:nth-child(3) { animation-delay: -4s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--gray-light);
+    letter-spacing: 0.05em;
+  }
+
+  /* SEPARATOR */
+  .sep {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 0 60px;
+    margin: 0;
+  }
+
+  .sep-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(201,169,110,0.2);
+  }
+
+  .sep-text {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  /* SECTION */
+  section {
+    padding: 120px 60px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  h2 em { font-style: italic; color: var(--gold); }
+
+  /* PROBLEM */
+  .problem {
+    background: var(--gray);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .problem-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--gray-light);
+    margin-bottom: 20px;
+  }
+
+  .problem-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .problem-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 14px;
+    color: var(--gray-light);
+    line-height: 1.6;
+  }
+
+  .problem-list li::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(201,169,110,0.1);
+    margin-top: 60px;
+  }
+
+  .service-card {
+    background: var(--black);
+    padding: 48px 40px;
+    position: relative;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .service-card:hover {
+    background: rgba(201,169,110,0.04);
+  }
+
+  .service-card:hover .service-icon { color: var(--gold); }
+
+  .service-icon {
+    font-size: 28px;
+    margin-bottom: 24px;
+    color: var(--gray-mid);
+    transition: color 0.3s;
+  }
+
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+
+  .service-card p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--gray-light);
+    margin-bottom: 20px;
+  }
+
+  .service-tag {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  /* PLANOS */
+  .plans {
+    background: var(--gray);
+  }
+
+  .plans-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .plan-card {
+    border: 1px solid rgba(201,169,110,0.15);
+    padding: 48px 36px;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .plan-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+
+  .plan-card.featured {
+    border-color: var(--gold);
+    background: rgba(201,169,110,0.04);
+  }
+
+  .plan-badge {
+    position: absolute;
+    top: -1px; right: 32px;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    font-weight: 500;
+  }
+
+  .plan-name {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .plan-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .plan-price span {
+    font-size: 18px;
+    color: var(--gray-light);
+  }
+
+  .plan-type {
+    font-size: 11px;
+    color: var(--gray-light);
+    letter-spacing: 0.1em;
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(201,169,110,0.1);
+  }
+
+  .plan-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .plan-features li {
+    font-size: 13px;
+    color: var(--gray-light);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    line-height: 1.5;
+  }
+
+  .plan-features li::before {
+    content: '✓';
+    color: var(--gold);
+    flex-shrink: 0;
+    font-size: 11px;
+    margin-top: 2px;
+  }
+
+  .plan-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+
+  .plan-btn-outline {
+    background: transparent;
+    border: 1px solid rgba(201,169,110,0.4);
+    color: var(--gold);
+  }
+
+  .plan-btn-outline:hover {
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
+  }
+
+  .plan-btn-solid {
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: var(--black);
+    font-weight: 500;
+  }
+
+  .plan-btn-solid:hover {
+    background: var(--gold-light);
+  }
+
+  /* AGENT SECTION */
+  .agent-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .agent-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 80% at 80% 50%, rgba(201,169,110,0.05) 0%, transparent 70%);
+  }
+
+  .agent-content {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .agent-visual {
+    position: relative;
+  }
+
+  .agent-terminal {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,169,110,0.2);
+    padding: 32px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .terminal-header {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff5f56; }
+  .dot-y { background: #ffbd2e; }
+  .dot-g { background: #27c93f; }
+
+  .terminal-line { color: var(--gray-light); }
+  .terminal-gold { color: var(--gold); }
+  .terminal-white { color: var(--white); }
+  .terminal-dim { color: #444; }
+
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: var(--gold);
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .agent-plans {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .agent-plan {
+    border: 1px solid rgba(201,169,110,0.15);
+    padding: 24px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: border-color 0.3s;
+  }
+
+  .agent-plan:hover { border-color: var(--gold); }
+
+  .agent-plan-name {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .agent-plan-desc {
+    font-size: 12px;
+    color: var(--gray-light);
+  }
+
+  .agent-plan-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .agent-plan-price small {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--gray-light);
+  }
+
+  /* PROCESS */
+  .process {
+    background: var(--gray);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(201,169,110,0.1);
+    margin-top: 60px;
+  }
+
+  .step {
+    background: var(--gray);
+    padding: 40px 32px;
+  }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 300;
+    color: rgba(201,169,110,0.15);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .step h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+
+  .step p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--gray-light);
+  }
+
+  /* CTA */
+  .cta-section {
+    text-align: center;
+    padding: 120px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,169,110,0.06) 0%, transparent 70%);
+  }
+
+  .cta-section h2 {
+    max-width: 600px;
+    margin: 0 auto 16px;
+  }
+
+  .cta-section p {
+    font-size: 15px;
+    color: var(--gray-light);
+    max-width: 400px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(201,169,110,0.1);
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-size: 12px;
+    color: var(--gray-light);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: var(--gray-light);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-right { display: none; }
+    section { padding: 80px 24px; }
+    .problem { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .plans-grid { grid-template-columns: 1fr; }
+    .agent-content { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; gap: 20px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Visara <span>Digital</span></div>
+  <div class="nav-links">
+    <a href="#servicos">Serviços</a>
+    <a href="#agentes">Agentes IA</a>
+    <a href="#planos">Planos</a>
+    <a href="#contato" class="nav-cta">Diagnóstico Grátis</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Presença Digital Premium</div>
+    <h1>Seu negócio <em>visível</em> para quem importa</h1>
+    <p class="hero-sub">Transformamos pequenos negócios locais em referências digitais na Serra Gaúcha — com sites, Google, e agentes de IA que trabalham enquanto você atende.</p>
+    <div class="hero-actions">
+      <a href="#contato" class="btn-primary">Diagnóstico Gratuito</a>
+      <a href="#planos" class="btn-ghost">Ver planos →</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="stat-card">
+      <div class="stat-number">119+</div>
+      <div class="stat-label">Negócios analisados esta semana</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">84%</div>
+      <div class="stat-label">Clínicas sem presença digital adequada</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">7h</div>
+      <div class="stat-label">Nosso agente prospeta enquanto você dorme</div>
+    </div>
+  </div>
+</section>
+
+<div class="sep">
+  <div class="sep-line"></div>
+  <div class="sep-text">Clínicas · Estéticas · Consultórios · Comércios</div>
+  <div class="sep-line"></div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="servicos">
+  <div class="problem-text fade-in">
+    <div class="section-label">O problema</div>
+    <h2>Seu cliente te procura no Google. <em>Você não aparece.</em></h2>
+    <p>A maioria dos negócios locais da Serra Gaúcha investe em estrutura física mas ignora a presença digital. Resultado: perde clientes todo dia para concorrentes menos qualificados que simplesmente aparecem primeiro.</p>
+    <p>Não é falta de qualidade no serviço. É falta de visibilidade onde o cliente decide.</p>
+  </div>
+  <ul class="problem-list fade-in">
+    <li>Google Meu Negócio desatualizado ou inexistente — clientes não te encontram no Maps</li>
+    <li>Site desatualizado ou sem otimização — não aparece nas buscas locais</li>
+    <li>Instagram sem estratégia — seguidores mas sem conversão em clientes</li>
+    <li>Nenhuma automação — você responde WhatsApp às 23h ou perde o lead</li>
+    <li>Zero campanhas pagas — concorrentes aparecem antes mesmo na pesquisa</li>
+    <li>Sem dados — não sabe quantos clientes vêm do digital</li>
+  </ul>
+</section>
+
+<!-- SERVICES -->
+<section id="solucoes">
+  <div class="section-label fade-in">O que entregamos</div>
+  <h2 class="fade-in">Presença digital <em>completa</em> — do básico ao avançado</h2>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">◈</div>
+      <h3>Site Profissional</h3>
+      <p>Site rápido, moderno e otimizado para aparecer no Google. Design personalizado para o seu segmento, com foco em conversão.</p>
+      <div class="service-tag">Setup único</div>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">◉</div>
+      <h3>Google Meu Negócio</h3>
+      <p>Configuração e otimização completa do seu perfil no Google Maps. Apareça quando seu cliente buscar pelo serviço na sua cidade.</p>
+      <div class="service-tag">Setup único</div>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">◎</div>
+      <h3>Gestão de Redes</h3>
+      <p>Conteúdo estratégico para Instagram e Facebook. Posts que geram autoridade e transformam seguidores em clientes.</p>
+      <div class="service-tag">Mensal</div>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">⬡</div>
+      <h3>Google Ads Local</h3>
+      <p>Campanhas segmentadas para aparecer quando seu cliente está procurando exatamente o que você oferece. Sem desperdício.</p>
+      <div class="service-tag">Mensal</div>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">◆</div>
+      <h3>Agente de IA</h3>
+      <p>Robô inteligente que responde clientes no WhatsApp, qualifica leads e agenda automaticamente — 24 horas por dia.</p>
+      <div class="service-tag">Mensal</div>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">◇</div>
+      <h3>Diagnóstico Digital</h3>
+      <p>Análise completa da sua presença online com score, oportunidades identificadas e plano de ação personalizado.</p>
+      <div class="service-tag">Gratuito</div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans" id="planos">
+  <div class="plans-header">
+    <div class="section-label fade-in">Setup — Pagamento único</div>
+    <h2 class="fade-in">Comece com o que <em>você precisa agora</em></h2>
+  </div>
+  <div class="plans-grid">
+    <div class="plan-card fade-in">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price"><span>R$</span>397</div>
+      <div class="plan-type">Pagamento único · Sem mensalidade</div>
+      <ul class="plan-features">
+        <li>Site profissional de 1 página</li>
+        <li>Google Meu Negócio configurado</li>
+        <li>Fotos e textos otimizados</li>
+        <li>Domínio por 1 ano</li>
+        <li>Hospedagem por 1 ano</li>
+        <li>Suporte 30 dias</li>
+      </ul>
+      <a href="#contato" class="plan-btn plan-btn-outline">Começar agora</a>
+    </div>
+
+    <div class="plan-card featured fade-in">
+      <div class="plan-badge">Mais popular</div>
+      <div class="plan-name">Profissional</div>
+      <div class="plan-price"><span>R$</span>797</div>
+      <div class="plan-type">Pagamento único · Sem mensalidade</div>
+      <ul class="plan-features">
+        <li>Site completo multi-página</li>
+        <li>Google Meu Negócio otimizado</li>
+        <li>Instagram configurado e bio otimizada</li>
+        <li>Diagnóstico digital completo</li>
+        <li>Integração WhatsApp Business</li>
+        <li>Domínio + hospedagem 1 ano</li>
+        <li>Suporte 60 dias</li>
+      </ul>
+      <a href="#contato" class="plan-btn plan-btn-solid">Começar agora</a>
+    </div>
+
+    <div class="plan-card fade-in">
+      <div class="plan-name">Premium</div>
+      <div class="plan-price"><span>R$</span>1.497</div>
+      <div class="plan-type">Pagamento único · Sem mensalidade</div>
+      <ul class="plan-features">
+        <li>Tudo do Profissional</li>
+        <li>Google Ads configurado e ativo</li>
+        <li>Agente de IA no WhatsApp</li>
+        <li>Meta Ads configurado</li>
+        <li>Relatório de performance mensal</li>
+        <li>Suporte prioritário 90 dias</li>
+      </ul>
+      <a href="#contato" class="plan-btn plan-btn-outline">Começar agora</a>
+    </div>
+  </div>
+</section>
+
+<!-- AGENTS -->
+<section class="agent-section" id="agentes">
+  <div class="agent-bg"></div>
+  <div class="agent-content">
+    <div class="agent-visual fade-in">
+      <div class="section-label">Tecnologia</div>
+      <h2>Agentes de IA que <em>trabalham por você</em></h2>
+      <p style="font-size:15px; line-height:1.7; color:var(--gray-light); margin-bottom:32px;">Já tem site e Google configurados? Leve seu negócio para o próximo nível com automação inteligente. Nossos agentes respondem clientes, qualificam leads e agendam — enquanto você foca no que sabe fazer.</p>
+
+      <div class="agent-terminal">
+        <div class="terminal-header">
+          <div class="dot dot-r"></div>
+          <div class="dot dot-y"></div>
+          <div class="dot dot-g"></div>
+        </div>
+        <div class="terminal-line"><span class="terminal-gold">›</span> Cliente envia mensagem às 22:47</div>
+        <div class="terminal-line terminal-dim">  "Boa noite, quero agendar uma consulta"</div>
+        <div class="terminal-line" style="margin-top:8px"><span class="terminal-gold">›</span> Agente responde em <span class="terminal-white">3 segundos</span></div>
+        <div class="terminal-line terminal-dim">  "Olá! Temos horários disponíveis na terça..."</div>
+        <div class="terminal-line" style="margin-top:8px"><span class="terminal-gold">›</span> Lead qualificado e <span class="terminal-white">agendamento confirmado</span></div>
+        <div class="terminal-line terminal-dim">  Você recebe notificação pela manhã</div>
+        <div class="terminal-line" style="margin-top:8px"><span class="terminal-gold">›</span> <span class="cursor"></span></div>
+      </div>
+    </div>
+
+    <div class="fade-in">
+      <div class="section-label" style="margin-bottom:32px">Planos mensais — Agentes IA</div>
+      <div class="agent-plans">
+        <div class="agent-plan">
+          <div>
+            <div class="agent-plan-name">Agente Básico</div>
+            <div class="agent-plan-desc">Responde WhatsApp automaticamente</div>
+          </div>
+          <div class="agent-plan-price">R$297<small>/mês</small></div>
+        </div>
+        <div class="agent-plan">
+          <div>
+            <div class="agent-plan-name">Agente Pro</div>
+            <div class="agent-plan-desc">WhatsApp + qualificação + agendamento</div>
+          </div>
+          <div class="agent-plan-price">R$497<small>/mês</small></div>
+        </div>
+        <div class="agent-plan">
+          <div>
+            <div class="agent-plan-name">Agente Full</div>
+            <div class="agent-plan-desc">Prospecção + atendimento + relatório</div>
+          </div>
+          <div class="agent-plan-price">R$797<small>/mês</small></div>
+        </div>
+      </div>
+      <p style="font-size:12px; color:var(--gray-light); margin-top:20px; line-height:1.6;">Ideal para negócios que já têm presença digital estruturada e querem automatizar o atendimento e a captação de novos clientes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="section-label fade-in">Como funciona</div>
+  <h2 class="fade-in">Do diagnóstico ao <em>resultado</em> em dias</h2>
+  <div class="process-steps">
+    <div class="step fade-in">
+      <div class="step-num">01</div>
+      <h4>Diagnóstico</h4>
+      <p>Analisamos sua presença digital atual — site, Google, redes sociais. Você recebe um relatório completo gratuito.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">02</div>
+      <h4>Proposta</h4>
+      <p>Com base no diagnóstico, apresentamos o plano ideal para o seu negócio e orçamento. Sem enrolação.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">03</div>
+      <h4>Execução</h4>
+      <p>Nossa equipe configura tudo em até 7 dias úteis. Site no ar, Google otimizado, tudo funcionando.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">04</div>
+      <h4>Resultado</h4>
+      <p>Você começa a aparecer para quem busca seu serviço na sua cidade. Clientes novos, mais agendamentos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contato">
+  <div class="cta-bg"></div>
+  <div style="position:relative">
+    <div class="section-label fade-in" style="text-align:center">Comece hoje</div>
+    <h2 class="fade-in">Receba seu diagnóstico <em>gratuito</em></h2>
+    <p class="fade-in">Analisamos sua presença digital em minutos e mostramos exatamente o que está perdendo — sem compromisso.</p>
+    <a href="https://wa.me/5554999999999?text=Olá!%20Quero%20meu%20diagnóstico%20digital%20gratuito" class="btn-primary fade-in" target="_blank">Solicitar diagnóstico grátis</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="logo" style="font-size:18px; margin-bottom:8px">Visara <span>Digital</span></div>
+    <p>Presença digital para negócios locais da Serra Gaúcha</p>
+  </div>
+  <div class="footer-links">
+    <a href="#servicos">Serviços</a>
+    <a href="#planos">Planos</a>
+    <a href="#agentes">Agentes IA</a>
+    <a href="#contato">Contato</a>
+  </div>
+  <p>© 2025 Visara Digital</p>
+</footer>
+
+<script>
+  // Fade in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Smooth nav background
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(8,8,8,0.97)';
+      nav.style.borderBottom = '1px solid rgba(201,169,110,0.1)';
+    } else {
+      nav.style.background = 'linear-gradient(to bottom, rgba(8,8,8,0.95), transparent)';
+      nav.style.borderBottom = 'none';
+    }
+  });
+</script>
+</body>
+</html>
